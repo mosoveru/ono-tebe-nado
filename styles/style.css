@@ -15,10 +15,9 @@
   gap: 0 32px;
   margin-right: 209px;
   list-style-type: circle;
-  white-space: nowrap;
 }
 
-.header__links-list .header__links-list-item:first-child {
+.header__links-list-item_no-bullit {
   list-style-type: none;
 }
 
@@ -26,7 +25,7 @@
   text-decoration: none;
 }
 
-.other-page {
+.header__link {
   text-underline-offset: 5px;
 }
 
@@ -44,23 +43,19 @@
   display: flex;
   flex-direction: column;
   justify-content: end;
+  max-width: 240px;
   font-style: normal;
   line-height: 24.3px;
 }
 
-.telephone-number, .email-address {
+.header__underline-offset {
   text-underline-offset: 5px;
 }
 
 .cover {
   position: relative;
-  max-width: 1440px;
+  z-index: 1;
   margin: 0 auto;
-}
-
-.cover-main-page {
-  display: block;
-  height: 757px;
   background-image: url(../images/cover.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -70,9 +65,8 @@
 .overlay::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
+  inset: 0;
+  z-index: -1;
   display: block;
   width: 100%;
   height: 100%;
@@ -80,16 +74,12 @@
 }
 
 .cover__title {
-  position: absolute;
-  top: 0;
-  z-index: 3;
-  width: 100%;
-  margin-bottom: 147px;
-  padding: 165px 50px 0 50px;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 165px 0 124px;
   color: #FFF;
   font-weight: 700;
   font-size: 100px;
-  font-style: normal;
   line-height: 115%;
   letter-spacing: 30px;
   text-transform: uppercase;
@@ -97,16 +87,21 @@
 
 .display-block {
   display: block;
-  padding: 0;
+}
+
+.margin-small {
+  margin-bottom: 5px;
+}
+
+.margin-medium {
+ margin-bottom: 15px;
 }
 
 .aligned-text {
-  margin-bottom: 13px;
   text-align: left;
 }
 
 .aligned-text_center {
-  margin-bottom: 3px;
   text-align: center;
 }
 
@@ -119,7 +114,7 @@
 }
 
 .no-letter-spacing {
-  letter-spacing: 0;
+  letter-spacing: initial;
 }
 
 .container-cover-accent {
@@ -128,21 +123,18 @@
 }
 
 .cover__description {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 3;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 78px;
-  width: 100%;
-  padding: 0 50px 50px;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding-bottom: 50px;
 }
 
 .cover__description-text {
-  width: 633px;
-  color: rgba(255, 255, 255, 0.9);
+  max-width: 633px;
+  color: rgb(255, 255, 255);
   font-weight: 400;
   font-size: 22px;
   font-style: normal;
@@ -152,27 +144,23 @@
 }
 
 .bet-button {
-  border: rgba(255, 255, 255, 0.9) solid 1px;
+  border: 1px solid rgb(255, 255, 255);
   padding: 12px 32px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgb(255, 255, 255);
   font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 22px;
-  font-style: normal;
-  line-height: 28px;
   text-transform: uppercase;
   background-color: transparent;
 }
 
 .lots {
-  max-width: 1440px;
+  max-width: 1340px;
   margin: 0 auto;
 }
 
 .lots__heading {
-  margin-top: 180px;
-  margin-bottom: 27px;
-  margin-left: 90px;
+  margin: 180px 40px 27px;
   color: #000;
   font-family: Raleway, sans-serif;
   font-weight: 700;
@@ -183,42 +171,54 @@
 .lots__card-list {
   display: flex;
   flex-wrap: wrap;
-  flex-grow: 1;
   justify-content: center;
   gap: 25px;
   list-style-type: none;
 }
 
+.lots__card-list-item {
+  flex-grow: 1;
+  width: 430px;
+  min-height: 450px;
+}
+
 .card {
   position: relative;
-  width: 430px;
-  height: 450px;
+  z-index: 1;
+  height: 100%;
   padding: 50px 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.card-link {
+  display: block;
+  height: 100%;
+  text-decoration: none;
 }
 
 .card_type_film {
   background-image: url(../images/card-lot-01.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
 }
 
 .card_type_book {
   background-image: url(../images/card-lot-02.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
 }
 
 .card_type_picture {
   background-image: url(../images/card-lot-03.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
+}
+
+.card_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .card__title {
-  position: absolute;
-  z-index: 3;
-  margin-right: 40px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgb(255, 255, 255);
   font-family: Raleway, sans-serif;
   font-weight: 700;
   font-size: 22px;
@@ -227,16 +227,10 @@
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   text-transform: uppercase;
-  word-wrap: break-word;
 }
 
 .card__text {
-  position: absolute;
-  bottom: 50px;
-  z-index: 3;
-  margin-right: 40px;
-  vertical-align: bottom;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgb(255, 255, 255);
   font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 20px;
@@ -245,9 +239,9 @@
 }
 
 .lots__look-more-link {
-  position: relative;
-  top: 30px;
-  left: 90px;
+  display: block;
+  margin-top: 30px;
+  margin-left: 40px;
   color: #000;
   font-family: Raleway, sans-serif;
   font-weight: 400;
@@ -259,12 +253,12 @@
 .about {
   display: grid;
   grid-template-columns: 430px 885px;
-  grid-template-rows: 240px 240px;
+  grid-template-rows: repeat(2, 1fr);
   justify-content: center;
-  gap: 0 25px;
+  gap: 8px 25px;
   max-width: 1440px;
   margin: 0 auto;
-  margin-top: 210px;
+  margin-top: 182px;
 }
 
 .about__logo {
@@ -295,15 +289,13 @@
 }
 
 .about__text {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
   color: #000;
   font-family: Raleway, sans-serif;
   font-weight: 400;
   font-size: 20px;
-}
-
-.about__text p:first-child {
-  margin-top: 8px;
-  margin-bottom: 25px;
 }
 
 .footer {
@@ -311,20 +303,19 @@
   justify-content: space-between;
   max-width: 1340px;
   margin: 0 auto;
-  margin-top: 190px;
+  margin-top: 180px;
   color: #000;
   font-weight: 400;
   font-size: 18px;
 }
 
-.footer .address .telephone-number, .footer .address .email-address {
+.footer_underline-offset {
   text-underline-offset: 4px;
 }
 
 .footer__menu-list {
   display: flex;
   flex-direction: column;
-  height: 64px;
   margin-left: 10px;
   text-align: center;
   list-style-type: none;
